@@ -3,6 +3,8 @@ import AllPosts from './all_posts';
 import AllTodos from './all_todos';
 import AddPost from './add_post';
 import AddTodo from './add_todo';
+import Collapsible from 'react-collapsible';
+
 
 
 const postsUrl = "https://jsonplaceholder.typicode.com/posts";
@@ -35,7 +37,6 @@ class UserTracker extends Component {
 		this.showLongestTodo(this.props.user_id);
 		this.showAllPosts(this.props.user_id);
 		this.showAllTodos(this.props.user_id);
-
 		this.insertPost = this.insertPost.bind(this);
 		this.setState = this.setState.bind(this);
 	}
@@ -185,60 +186,107 @@ class UserTracker extends Component {
 		//this.setState({postSubmitted: true});
 	}
 
+
+							// <div className="flex">
+			    //         <div className="tiles smallestPost">
+		     //                <h3>Smallest Post</h3>
+		     //                <div>{this.state.smallestBody}</div>
+		     //            </div>
+		     //            <div className="tiles smallestPost">
+		     //                <h3>Longest Post</h3>
+		     //                <div>{this.state.longestBody}</div>
+		     //            </div>
+		     //            <div className="tiles smallestPost">
+		     //                <h3>Smallest Title</h3>
+		     //                <div>{this.state.smallestTitle}</div>
+		     //            </div>
+		     //             <div className="tiles smallestPost">
+		     //                <h3>Longest Title</h3>
+		     //                <div>{this.state.longestTitle}</div>
+		     //            </div>
+		     //            <div className="tiles smallestPost">
+		     //                <h3>Smallest Todo</h3>
+		     //                <div>{this.state.smallestTodo}</div>
+		     //            </div>
+		     //            <div className="tiles smallestPost">
+		     //                <h3>Longest Todo</h3>
+		     //                <div>{this.state.longestTodo}</div>
+		     //            </div>
+
+
+		     //            <div className="allPosts flex">
+		     //            	<h3>All Posts</h3>
+		     //            	<AllPosts allPosts={this.state.allPosts}/>
+		     //            </div>
+		     //            <div className="allTodos">
+		     //            	<h3>All Todos</h3>
+		     //            	<AllTodos allTodos={this.state.allTodos}/>
+		     //            </div>
+		     //            <div className="addPost">
+		     //            	<h3>Add Post </h3>
+		     //            	<AddPost userId={this.state.userId} submitPost={this.insertPost.bind(this)}/>	                	
+		     //            </div>
+		     //            <div className="addTodo">
+		     //            	<h3>Add Todo </h3>
+		     //            	<AddTodo userId={this.state.userId} submitTodo={this.insertTodo.bind(this)}/>	                	
+		     //            </div>
+		     //        </div>
+       //          </div>
+
 	render(){
 		//const insertPost = (user_id, post)=>{this.insertPost(user_id, post)};
 
 		return (<div>
-					<div className="flex">
-			            <div className="tiles smallestPost">
-		                    <h3>Smallest Post</h3>
-		                    <div>{this.state.smallestBody}</div>
-		                </div>
-		                <div className="tiles smallestPost">
-		                    <h3>Longest Post</h3>
-		                    <div>{this.state.longestBody}</div>
-		                </div>
-		                <div className="tiles smallestPost">
-		                    <h3>Smallest Title</h3>
-		                    <div>{this.state.smallestTitle}</div>
-		                </div>
-		                 <div className="tiles smallestPost">
-		                    <h3>Longest Title</h3>
-		                    <div>{this.state.longestTitle}</div>
-		                </div>
-		                <div className="tiles smallestPost">
-		                    <h3>Smallest Todo</h3>
-		                    <div>{this.state.smallestTodo}</div>
-		                </div>
-		                <div className="tiles smallestPost">
-		                    <h3>Longest Todo</h3>
-		                    <div>{this.state.longestTodo}</div>
-		                </div>
-		                <div className="allPosts flex">
-		                	<h3>All Posts</h3>
-		                	<AllPosts allPosts={this.state.allPosts}/>
-		                </div>
-		                <div className="allTodos">
-		                	<h3>All Todos</h3>
-		                	<AllTodos allTodos={this.state.allTodos}/>
-		                </div>
-		                <div className="addPost">
-		                	<h3>Add Post </h3>
-		                	<AddPost userId={this.state.userId} submitPost={this.insertPost.bind(this)}/>	                	
-		                </div>
-		                <div className="addPost">
-		                	<h3>Add Todo </h3>
-		                	<AddTodo userId={this.state.userId} submitTodo={this.insertTodo.bind(this)}/>	                	
-		                </div>
-		            </div>
-                </div>
-			
+
+					<Collapsible trigger="User Stats" className="is-open">
+						<div className="flex">
+				            <div className="tiles smallestPost">
+			                    <h3>Smallest Post</h3>
+			                    <div>{this.state.smallestBody}</div>
+			                </div>
+			                <div className="tiles smallestPost">
+			                    <h3>Longest Post</h3>
+			                    <div>{this.state.longestBody}</div>
+			                </div>
+			                <div className="tiles smallestPost">
+			                    <h3>Smallest Title</h3>
+			                    <div>{this.state.smallestTitle}</div>
+			                </div>
+			                 <div className="tiles smallestPost">
+			                    <h3>Longest Title</h3>
+			                    <div>{this.state.longestTitle}</div>
+			                </div>
+			                <div className="tiles smallestPost">
+			                    <h3>Smallest Todo</h3>
+			                    <div>{this.state.smallestTodo}</div>
+			                </div>
+			                <div className="tiles smallestPost">
+			                    <h3>Longest Todo</h3>
+			                    <div>{this.state.longestTodo}</div>
+			                </div>	
+		                </div>				
+					</Collapsible>
+					<Collapsible trigger="All Posts">
+						<AllPosts allPosts={this.state.allPosts}/>
+					</Collapsible>
+					<Collapsible trigger="All Todos">
+						<AllTodos allTodos={this.state.allTodos}/>
+					</Collapsible>
+					<Collapsible trigger="Add Post">
+						<AddPost userId={this.state.userId} submitPost={this.insertPost.bind(this)}/>
+					</Collapsible>
+					<Collapsible trigger="Add Todo">
+						<AddTodo userId={this.state.userId} submitTodo={this.insertTodo.bind(this)}/>
+					</Collapsible>
+				</div>
 			)
 	}
-
 
 }
 
 
 
 export default UserTracker;
+
+
+
