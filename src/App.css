@@ -51,7 +51,6 @@ section {
 }
 
 
-
 .tiles {
   background-color:#fff;
   width:28%;
@@ -75,12 +74,12 @@ section {
   border-radius: 20px;
   border: none;
   height: 40px;
+  line-height: 40px;
   min-width: 150px;
   font-size:1em;
   color: #fff;
   margin:1em;
   font-family: 'Open Sans', sans-serif;
-  padding:10px;
   transition:background-color 0.5s;
   cursor:pointer;
 }
@@ -121,12 +120,18 @@ section {
   font-size:1.2em;
   cursor:pointer;
   line-height:60px;
-  border-bottom: 1px solid #fff;
+  border: 1px solid #fff;
+  margin-bottom:3px;
 }
 
 .Collapsible__trigger: hover {
     background-color:#0ceec4;
     color:#000;
+}
+
+.section3 .Collapsible__trigger {
+  background-color:#4aebcd;
+  border:none;
 }
 
 .form {
@@ -136,6 +141,22 @@ section {
 
 .content {
   padding:2em;
+  background-color: #fff;
+}
+
+label, input, textarea {
+  width:100%;
+  display:block;
+  line-height: 35px;
+  font-size:1em;
+}
+
+input {
+  height:35px;
+}
+
+.form-group {
+  padding-bottom:1em;
 }
 
 

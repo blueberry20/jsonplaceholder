@@ -237,7 +237,7 @@ class UserTracker extends Component {
 		//const insertPost = (user_id, post)=>{this.insertPost(user_id, post)};
 
 		return (<div>
-					<Collapsible trigger="User Stats" className="is-open">
+					<Collapsible open={true} trigger="User Stats" className="is-open">
 						<div className="flex content">
 				            <div className="tiles smallestPost">
 			                    <h3>Smallest Post</h3>

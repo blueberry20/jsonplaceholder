@@ -12,14 +12,12 @@ class AddTodo extends Component {
 
 	render(){
 		return (
-			<div>
-				<div className="addTodoForm">                                 
-		            <div className="form-group">
-		                <label>Title</label>
-		                <input onChange={event => this.setState({title: event.target.value})} type="text" className="form-control postTitle"/>
-		            </div>
-		            <button onClick={()=>this.onSubmitClick()} className="submitTodoButton coralButton">Submit</button>
-		        </div>
+			<div className="form">                                 
+	            <div className="form-group">
+	                <label>Title</label>
+	                <input onChange={event => this.setState({title: event.target.value})} type="text" className="form-control postTitle"/>
+	            </div>
+	            <button onClick={()=>this.onSubmitClick()} className="submitTodoButton coralButton">Submit</button>
 	        </div>
 		)
 	}

@@ -13,7 +13,7 @@ const AllPosts = (props) =>{
 	});
 
 	return (
-		<div className="content flex">
+		<div className="flex">
 			{allPosts}
 		</div>
 
