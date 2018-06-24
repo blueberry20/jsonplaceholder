@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-//import UserTracker from './components/user_tracker';
 import UserTrackerList from './components/user_tracker_list';
 
 class App extends Component {

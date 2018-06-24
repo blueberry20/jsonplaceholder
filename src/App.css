@@ -21,6 +21,7 @@ h1 {
   font-family: 'Lato', sans-serif;
   margin: 0.5em auto;
 }
+
 h2 {
   width:100%;
   text-align: center;
@@ -38,8 +39,8 @@ header {
 
 
 section {
-    padding: 3em;
-    text-align:center;
+  padding: 3em;
+  text-align:center;
 }
 
 .section1 {
@@ -50,11 +51,10 @@ section {
   background-color:#04d8b1;
 }
 
-
 .tiles {
   background-color:#fff;
-  width:28%;
-  margin: 15px;
+  width:27%;
+  margin: 1%;
   padding:1em;
   text-align: center;
   border-radius: 1em;
@@ -67,7 +67,6 @@ section {
   font-family: 'Roboto', sans-serif;
   text-transform: capitalize;
 }
-
 
 .coralButton {
   background-color: #f9451e;
@@ -87,7 +86,7 @@ section {
 .coralButton:hover, .coralButton:focus, .coralButon:active {
   background-color:#000;
   outline: none !important;
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .capitalize {
@@ -144,14 +143,14 @@ section {
   background-color: #fff;
 }
 
-label, input, textarea {
+label, input[type="text"], textarea {
   width:100%;
   display:block;
   line-height: 35px;
   font-size:1em;
 }
 
-input {
+input[type="text"] {
   height:35px;
 }
 
@@ -162,21 +161,26 @@ input {
 
 /*=====================Media queries==============================*/
 
-@media only screen and (max-width: 1200px) {
-  .tiles {
-    width:30%;
+@media only screen and (max-width: 1400px) {
+  .container {
+    width:90%;
   }
 }
 
 @media only screen and (max-width: 1000px) {
-  ul {
-    width:25%;
+  .tiles {
+    width:40%;
   }
 }
+
 @media only screen and (max-width: 600px) {
-  .header {
+  header {
     padding:1em;
     margin-bottom:0;
+  }
+
+  section {
+    padding:1em;
   }
 
   h1 {
@@ -187,27 +191,30 @@ input {
     font-size:1.5em;
   }
 
-  p, ul {
-    font-size:1.2em;
-  }
-
-    .tiles {
+  .tiles {
         width:90%;
   }
-  
-  ul {
-    width:90%;
+
+  .content {
     padding:10px;
-    border-radius:10px;
+  }
+
+  .form {
+    width:90%;
+  }
+
+  .tiles h3 {
+    padding-bottom:0;
+  }
+  
+  .allTodosUl {
+    width:80%;
   }
 
   li {
     margin-top:10px;
   }
 
-  li p {
-    font-size:0.8em;
-  }
 }
 
 

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-
+//display all posts for a user
 const AllPosts = (props) =>{
 	
 	const allPosts = props.allPosts.map((item, index)=>{

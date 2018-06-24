@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-
+//add a post form that calls insertPost function in UserTracker class
 class AddPost extends Component {
 	constructor(props){
 		super(props);

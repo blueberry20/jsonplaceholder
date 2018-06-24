@@ -6,12 +6,10 @@ import AddTodo from './add_todo';
 import Collapsible from 'react-collapsible';
 
 
-
 const postsUrl = "https://jsonplaceholder.typicode.com/posts";
 const todosUrl = "https://jsonplaceholder.typicode.com/todos";
 
 class UserTracker extends Component {
-
 
 	constructor(props){
 		super(props);
@@ -26,6 +24,7 @@ class UserTracker extends Component {
 			allPosts: [],
 			allTodos:[],
 			postSubmitted: false,
+			todoSubmitted:false,
 			userId: this.props.user_id
 		};
 
@@ -38,15 +37,13 @@ class UserTracker extends Component {
 		this.showAllPosts(this.props.user_id);
 		this.showAllTodos(this.props.user_id);
 		this.insertPost = this.insertPost.bind(this);
-		this.setState = this.setState.bind(this);
+		//this.setState = this.setState.bind(this);
 	}
-
-
 
 
 	//Records a post for a user
 	insertPost(user_id, post) {
-		fetch("https://jsonplaceholder.typicode.com/posts", {
+		fetch(postsUrl, {
 			method: "POST",
 			body: JSON.stringify({
 				title: post.hello,
@@ -62,12 +59,15 @@ class UserTracker extends Component {
 			console.log(json);
 			}
 		)
+		.catch(function(error) {
+		    console.log(error)
+		});
 	}
 
 	//Records a todo for a user
 	insertTodo(user_id, todo) {
-		console.log(todo);
-		fetch("https://jsonplaceholder.typicode.com/todos", {
+		//console.log(todo);
+		fetch(todosUrl, {
 			method: "POST",
 			body: JSON.stringify({
 				title: todo,
@@ -79,8 +79,18 @@ class UserTracker extends Component {
 			}
 		})
 		.then(response => response.json())
-		.then(json => console.log(json));
+		.then(json => console.log(json))
+		.catch(function(error) {
+		    console.log(error)
+		}); 
 	}
+
+	// submitTodo(user_id, todo){
+	// 	this.insertTodo(user_id, todo).then((data)=>{
+	// 		//let completed = true;
+	// 	})
+	// 	this.setState({todoSubmitted: true});
+	// }
 
 	//Show the post where the body text has smallest length for the user
 	showSmallestPostByBody(user_id) {
@@ -89,7 +99,6 @@ class UserTracker extends Component {
 				return prev.body.length < curr.body.length ? prev : curr;
 			});
 			this.setState({smallestBody: smallestBodyObj.body});
-
 		});	
 	}
 
@@ -99,7 +108,6 @@ class UserTracker extends Component {
 			let longestBodyObj = data.reduce(function(prev, curr) {
 				return prev.body.length > curr.body.length ? prev : curr;
 			});
-			//console.log(longestBodyObj.body);
 			this.setState({longestBody: longestBodyObj.body});
 		});	
 	}
@@ -110,7 +118,6 @@ class UserTracker extends Component {
 			let smallestTitleObj = data.reduce(function(prev, curr) {
 				return prev.title.length < curr.title.length ? prev : curr;
 			});
-			//console.log(smallestTitleObj.title);
 			this.setState({smallestTitle: smallestTitleObj.title});
 		});	
 	}
@@ -121,7 +128,6 @@ class UserTracker extends Component {
 			let longestTitleObj = data.reduce(function(prev, curr) {
 				return prev.title.length > curr.title.length ? prev : curr;
 			});
-			//console.log(longestTitleObj.title);
 			this.setState({longestTitle: longestTitleObj.title});
 		});	
 	}
@@ -132,7 +138,6 @@ class UserTracker extends Component {
 			let smallestTodoObj = data.reduce(function(prev, curr) {
 				return prev.title.length < curr.title.length ? prev : curr;
 			});
-			//console.log(smallestTodoObj.title);
 			this.setState({smallestTodo: smallestTodoObj.title});
 		});	
 	}
@@ -143,7 +148,6 @@ class UserTracker extends Component {
 			let longestTodoObj = data.reduce(function(prev, curr) {
 				return prev.title.length > curr.title.length ? prev : curr;
 			});
-			//console.log(longestTodoObj.title);
 			this.setState({longestTodo: longestTodoObj.title});
 		});	
 	}
@@ -176,66 +180,12 @@ class UserTracker extends Component {
 
 	showAllTodos(user_id){
 		this.getAllTodos(user_id).then((data) =>{
-			//console.log(data);
 			this.setState({allTodos: data});
 		});	
 	}
 
-	test(user_id, post){
-		console.log(user_id);
-		//this.setState({postSubmitted: true});
-	}
-
-
-							// <div className="flex">
-			    //         <div className="tiles smallestPost">
-		     //                <h3>Smallest Post</h3>
-		     //                <div>{this.state.smallestBody}</div>
-		     //            </div>
-		     //            <div className="tiles smallestPost">
-		     //                <h3>Longest Post</h3>
-		     //                <div>{this.state.longestBody}</div>
-		     //            </div>
-		     //            <div className="tiles smallestPost">
-		     //                <h3>Smallest Title</h3>
-		     //                <div>{this.state.smallestTitle}</div>
-		     //            </div>
-		     //             <div className="tiles smallestPost">
-		     //                <h3>Longest Title</h3>
-		     //                <div>{this.state.longestTitle}</div>
-		     //            </div>
-		     //            <div className="tiles smallestPost">
-		     //                <h3>Smallest Todo</h3>
-		     //                <div>{this.state.smallestTodo}</div>
-		     //            </div>
-		     //            <div className="tiles smallestPost">
-		     //                <h3>Longest Todo</h3>
-		     //                <div>{this.state.longestTodo}</div>
-		     //            </div>
-
-
-		     //            <div className="allPosts flex">
-		     //            	<h3>All Posts</h3>
-		     //            	<AllPosts allPosts={this.state.allPosts}/>
-		     //            </div>
-		     //            <div className="allTodos">
-		     //            	<h3>All Todos</h3>
-		     //            	<AllTodos allTodos={this.state.allTodos}/>
-		     //            </div>
-		     //            <div className="addPost">
-		     //            	<h3>Add Post </h3>
-		     //            	<AddPost userId={this.state.userId} submitPost={this.insertPost.bind(this)}/>	                	
-		     //            </div>
-		     //            <div className="addTodo">
-		     //            	<h3>Add Todo </h3>
-		     //            	<AddTodo userId={this.state.userId} submitTodo={this.insertTodo.bind(this)}/>	                	
-		     //            </div>
-		     //        </div>
-       //          </div>
-
+	//render accordion with collapsible sections
 	render(){
-		//const insertPost = (user_id, post)=>{this.insertPost(user_id, post)};
-
 		return (<div>
 					<Collapsible open={true} trigger="User Stats" className="is-open">
 						<div className="flex content">
@@ -281,8 +231,9 @@ class UserTracker extends Component {
 						</div>
 					</Collapsible>
 					<Collapsible trigger="Add Todo">
-					<div className="content">
+						<div className="content">
 							<AddTodo userId={this.state.userId} submitTodo={this.insertTodo.bind(this)}/>
+							{this.state.todoSubmitted == true ? "Todo was submitted" : null}
 						</div>
 					</Collapsible>
 				</div>
@@ -290,7 +241,6 @@ class UserTracker extends Component {
 	}
 
 }
-
 
 
 export default UserTracker;
