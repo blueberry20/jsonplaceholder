@@ -14,7 +14,7 @@ class AddPost extends Component {
 	render(){
 		return (
 			<div>
-				<div className="addPostForm">                                 
+				<div className="form">                                 
 		            <div className="form-group">
 		                <label>Title</label>
 		                <input onChange={event => this.setState({title: event.target.value})} type="text" className="form-control postTitle"/>

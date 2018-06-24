@@ -10,7 +10,7 @@ const AllTodos = (props) =>{
 	});
 
 	return (
-		<ul>
+		<ul className="allTodosUl">
 			{allTodos}
 		</ul>
 

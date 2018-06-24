@@ -237,46 +237,53 @@ class UserTracker extends Component {
 		//const insertPost = (user_id, post)=>{this.insertPost(user_id, post)};
 
 		return (<div>
-
 					<Collapsible trigger="User Stats" className="is-open">
-						<div className="flex">
+						<div className="flex content">
 				            <div className="tiles smallestPost">
 			                    <h3>Smallest Post</h3>
-			                    <div>{this.state.smallestBody}</div>
+			                    <p>{this.state.smallestBody}</p>
 			                </div>
 			                <div className="tiles smallestPost">
 			                    <h3>Longest Post</h3>
-			                    <div>{this.state.longestBody}</div>
+			                    <p>{this.state.longestBody}</p>
 			                </div>
 			                <div className="tiles smallestPost">
 			                    <h3>Smallest Title</h3>
-			                    <div>{this.state.smallestTitle}</div>
+			                    <p>{this.state.smallestTitle}</p>
 			                </div>
 			                 <div className="tiles smallestPost">
 			                    <h3>Longest Title</h3>
-			                    <div>{this.state.longestTitle}</div>
+			                    <p>{this.state.longestTitle}</p>
 			                </div>
 			                <div className="tiles smallestPost">
 			                    <h3>Smallest Todo</h3>
-			                    <div>{this.state.smallestTodo}</div>
+			                    <p>{this.state.smallestTodo}</p>
 			                </div>
 			                <div className="tiles smallestPost">
 			                    <h3>Longest Todo</h3>
-			                    <div>{this.state.longestTodo}</div>
+			                    <p>{this.state.longestTodo}</p>
 			                </div>	
 		                </div>				
 					</Collapsible>
 					<Collapsible trigger="All Posts">
-						<AllPosts allPosts={this.state.allPosts}/>
+						<div className="content">
+							<AllPosts allPosts={this.state.allPosts}/>
+						</div>
 					</Collapsible>
 					<Collapsible trigger="All Todos">
-						<AllTodos allTodos={this.state.allTodos}/>
+						<div className="content">
+							<AllTodos allTodos={this.state.allTodos}/>
+						</div>
 					</Collapsible>
 					<Collapsible trigger="Add Post">
-						<AddPost userId={this.state.userId} submitPost={this.insertPost.bind(this)}/>
+						<div className="content">
+							<AddPost userId={this.state.userId} submitPost={this.insertPost.bind(this)}/>
+						</div>
 					</Collapsible>
 					<Collapsible trigger="Add Todo">
-						<AddTodo userId={this.state.userId} submitTodo={this.insertTodo.bind(this)}/>
+					<div className="content">
+							<AddTodo userId={this.state.userId} submitTodo={this.insertTodo.bind(this)}/>
+						</div>
 					</Collapsible>
 				</div>
 			)
