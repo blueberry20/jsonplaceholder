@@ -28,6 +28,9 @@ class UserTracker extends Component {
 			userId: this.props.user_id
 		};
 
+	}
+
+	componentDidMount(){
 		this.showSmallestPostByBody(this.props.user_id);
 		this.showLongestPostByBody(this.props.user_id);
 		this.showSmallestPostByTitle(this.props.user_id);
@@ -36,13 +39,12 @@ class UserTracker extends Component {
 		this.showLongestTodo(this.props.user_id);
 		this.showAllPosts(this.props.user_id);
 		this.showAllTodos(this.props.user_id);
-		this.insertPost = this.insertPost.bind(this);
-		//this.setState = this.setState.bind(this);
 	}
 
 
 	//Records a post for a user
 	insertPost(user_id, post) {
+		const self = this;
 		fetch(postsUrl, {
 			method: "POST",
 			body: JSON.stringify({
@@ -57,6 +59,7 @@ class UserTracker extends Component {
 		.then(response => response.json())
 		.then(json => {
 			console.log(json);
+			self.setState({postSubmitted: true});
 			}
 		)
 		.catch(function(error) {
@@ -66,7 +69,7 @@ class UserTracker extends Component {
 
 	//Records a todo for a user
 	insertTodo(user_id, todo) {
-		//console.log(todo);
+		const self = this;
 		fetch(todosUrl, {
 			method: "POST",
 			body: JSON.stringify({
@@ -79,18 +82,14 @@ class UserTracker extends Component {
 			}
 		})
 		.then(response => response.json())
-		.then(json => console.log(json))
+		.then(json => {
+			console.log(json);
+			self.setState({todoSubmitted: true});
+		})
 		.catch(function(error) {
 		    console.log(error)
 		}); 
 	}
-
-	// submitTodo(user_id, todo){
-	// 	this.insertTodo(user_id, todo).then((data)=>{
-	// 		//let completed = true;
-	// 	})
-	// 	this.setState({todoSubmitted: true});
-	// }
 
 	//Show the post where the body text has smallest length for the user
 	showSmallestPostByBody(user_id) {
@@ -184,7 +183,7 @@ class UserTracker extends Component {
 		});	
 	}
 
-	//render accordion with collapsible sections
+	//render accordion with collapsible sections for components
 	render(){
 		return (<div>
 					<Collapsible open={true} trigger="User Stats" className="is-open">
@@ -228,12 +227,13 @@ class UserTracker extends Component {
 					<Collapsible trigger="Add Post">
 						<div className="content">
 							<AddPost userId={this.state.userId} submitPost={this.insertPost.bind(this)}/>
+							{this.state.postSubmitted === true ? <p className='success-alert'>Your post was submitted</p> : null}
 						</div>
 					</Collapsible>
 					<Collapsible trigger="Add Todo">
 						<div className="content">
 							<AddTodo userId={this.state.userId} submitTodo={this.insertTodo.bind(this)}/>
-							{this.state.todoSubmitted == true ? "Todo was submitted" : null}
+							{this.state.todoSubmitted === true ? <p className='success-alert'>Your todo was submitted</p> : null}
 						</div>
 					</Collapsible>
 				</div>

@@ -9,6 +9,7 @@ git clone https://github.com/blueberry20/jsonplaceholder.git
 cd jsonplaceholder
 
 //install dependencies
+
 npm install
 
 npm start
